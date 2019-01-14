@@ -2,16 +2,16 @@ using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Assets.Scripts.Main.Managers
 {
     public enum PhotonEventCodes
     {
-        MovedPosition = 0
+        MOVE_POSITION = 0,
+        FLASH_LIGHT = 1
     }
 
-    public class MainNetworkManager : MonoBehaviourPunCallbacks
+    public class MainNetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
     {
         private byte maxPlayersPerRoom = 2;
 
@@ -50,14 +50,8 @@ namespace Assets.Scripts.Main.Managers
             {
                 if (m_CurrentPollTime <= 0)
                 {
-                    object[] l_data = new object[] { m_Player.transform.position };
-                    RaiseEventOptions l_raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-                    SendOptions l_sendOptions = new SendOptions { Reliability = true };
-
-                    PhotonNetwork.RaiseEvent((byte)PhotonEventCodes.MovedPosition, l_data, l_raiseEventOptions, l_sendOptions);
-                    Debug.Log("Raised The Damn Event With:" + l_data[0]);
-
-
+                    // Raise 
+                    PollPlayerPosition();
                     m_CurrentPollTime = PollRate;
                 }
 
@@ -101,6 +95,49 @@ namespace Assets.Scripts.Main.Managers
         private void OnFailedToConnectToPhoton()
         {
             Debug.Log("Disconnected from Network...");
+        }
+
+        #endregion
+
+        #region -= Events =-
+
+        public override void OnEnable()
+        {
+            PhotonNetwork.AddCallbackTarget(this);
+        }
+
+        public override void OnDisable()
+        {
+            PhotonNetwork.RemoveCallbackTarget(this);
+        }
+
+        public void OnEvent(EventData photonEvent)
+        {
+            switch (photonEvent.Code)
+            {
+                case (byte)PhotonEventCodes.FLASH_LIGHT:
+                    {
+                        object[] l_data = (object[])photonEvent.CustomData;
+                        bool l_dataState = (bool)l_data[0];
+                        Debug.Log($"FlashLightState: {l_dataState}");
+                        break;
+                    }
+            }
+        }
+
+        #endregion
+
+        #region -= RaiseEvents =-
+
+        private void PollPlayerPosition()
+        {
+            object[] l_data = new object[] { m_Player.transform.position };
+            RaiseEventOptions l_raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+            SendOptions l_sendOptions = new SendOptions { Reliability = true };
+
+            PhotonNetwork.RaiseEvent((byte)PhotonEventCodes.MOVE_POSITION, l_data, l_raiseEventOptions, l_sendOptions);
+            Debug.Log("Raised The Damn Event With:" + l_data[0]);
+
         }
 
         #endregion
