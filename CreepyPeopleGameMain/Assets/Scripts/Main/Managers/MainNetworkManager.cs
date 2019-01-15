@@ -133,8 +133,7 @@ namespace Assets.Scripts.Main.Managers
             SendOptions l_sendOptions = new SendOptions { Reliability = true };
 
             PhotonNetwork.RaiseEvent((byte)PhotonEventCodes.MOVE_POSITION, l_data, l_raiseEventOptions, l_sendOptions);
-            Debug.Log("Raised The Damn Event With:" + l_data[0]);
-
+            //Debug.Log("Raised The Damn Event With:" + l_data[0]);
         }
 
         #endregion
