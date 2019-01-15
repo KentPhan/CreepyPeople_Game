@@ -294,6 +294,7 @@ GameObject:
   - component: {fileID: 26}
   - component: {fileID: 28}
   - component: {fileID: 1951196762}
+  - component: {fileID: 1591944101471515866}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Untagged
@@ -667,3 +668,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1591944101471515866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea3102d93ac664e4090fe28f26567080, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlashLight: {fileID: 2133508837}

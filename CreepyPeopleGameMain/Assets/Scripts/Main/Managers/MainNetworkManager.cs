@@ -116,6 +116,10 @@ namespace Assets.Scripts.Main.Managers
                     {
                         object[] l_data = (object[])photonEvent.CustomData;
                         bool l_dataState = (bool)l_data[0];
+                        if (l_dataState)
+                            GameManager.Instance.GetCurrentPlayer().TurnOnFlashlight();
+                        else
+                            GameManager.Instance.GetCurrentPlayer().TurnOffFlashlight();
                         Debug.Log($"FlashLightState: {l_dataState}");
                         break;
                     }
@@ -128,12 +132,15 @@ namespace Assets.Scripts.Main.Managers
 
         private void PollPlayerPosition()
         {
-            object[] l_data = new object[] { GameManager.Instance.GetCurrentPlayer().transform.position };
-            RaiseEventOptions l_raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-            SendOptions l_sendOptions = new SendOptions { Reliability = true };
+            if (GameManager.Instance.GetCurrentPlayer() != null)
+            {
+                object[] l_data = new object[] { GameManager.Instance.GetCurrentPlayer().transform.position };
+                RaiseEventOptions l_raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+                SendOptions l_sendOptions = new SendOptions { Reliability = true };
 
-            PhotonNetwork.RaiseEvent((byte)PhotonEventCodes.MOVE_POSITION, l_data, l_raiseEventOptions, l_sendOptions);
-            //Debug.Log("Raised The Damn Event With:" + l_data[0]);
+                PhotonNetwork.RaiseEvent((byte)PhotonEventCodes.MOVE_POSITION, l_data, l_raiseEventOptions, l_sendOptions);
+                //Debug.Log("Raised The Damn Event With:" + l_data[0]);
+            }
         }
 
         #endregion
