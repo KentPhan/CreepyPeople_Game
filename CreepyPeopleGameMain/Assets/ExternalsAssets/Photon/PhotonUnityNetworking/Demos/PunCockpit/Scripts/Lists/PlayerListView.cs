@@ -18,7 +18,7 @@ using Photon.Realtime;
 namespace Photon.Pun.Demo.Cockpit
 {
     /// <summary>
-    /// Player list UI View.
+    /// PlayerScript list UI View.
     /// </summary>
     public class PlayerListView : MonoBehaviourPunCallbacks
     {
@@ -102,7 +102,7 @@ namespace Photon.Pun.Demo.Cockpit
             }
             else
             {
-                Debug.LogWarning("PlayerListView: missing Player Ui Cell for " + target, this);
+                Debug.LogWarning("PlayerListView: missing PlayerScript Ui Cell for " + target, this);
             }
 
             StartCoroutine("UpdateUIPing");

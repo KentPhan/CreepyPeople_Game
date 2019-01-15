@@ -22,7 +22,6 @@ namespace Assets.Scripts.Main.Managers
 
 
         private float m_CurrentPollTime = 0.0f;
-        private GameObject m_Player = null;
 
         public static MainNetworkManager Instance;
 
@@ -46,7 +45,7 @@ namespace Assets.Scripts.Main.Managers
         // Update is called once per frame
         void Update()
         {
-            if (PhotonNetwork.InRoom)
+            if (PhotonNetwork.InRoom && GameManager.Instance.GetCurrentGameState() == GameStates.PLAY)
             {
                 if (m_CurrentPollTime <= 0)
                 {
@@ -86,9 +85,7 @@ namespace Assets.Scripts.Main.Managers
         public override void OnJoinedRoom()
         {
             // Need to move this somewhere else later
-            GameObject l_playerPrefab = GameManager.Instance.GetPlayerPrefab();
-            Transform l_spawn = GameManager.Instance.GetSpawnPosition();
-            m_Player = Instantiate(l_playerPrefab, l_spawn.position, l_spawn.rotation);
+            GameManager.Instance.StartGame();
             Debug.Log("Joined Room");
         }
 
@@ -131,13 +128,12 @@ namespace Assets.Scripts.Main.Managers
 
         private void PollPlayerPosition()
         {
-            object[] l_data = new object[] { m_Player.transform.position };
+            object[] l_data = new object[] { GameManager.Instance.GetCurrentPlayer().transform.position };
             RaiseEventOptions l_raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
             SendOptions l_sendOptions = new SendOptions { Reliability = true };
 
             PhotonNetwork.RaiseEvent((byte)PhotonEventCodes.MOVE_POSITION, l_data, l_raiseEventOptions, l_sendOptions);
-            Debug.Log("Raised The Damn Event With:" + l_data[0]);
-
+            //Debug.Log("Raised The Damn Event With:" + l_data[0]);
         }
 
         #endregion

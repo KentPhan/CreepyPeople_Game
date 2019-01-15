@@ -101,7 +101,7 @@ namespace Photon.Pun.Demo.Asteroids
 
             while (timer > 0.0f)
             {
-                InfoText.text = string.Format("Player {0} won with {1} points.\n\n\nReturning to login screen in {2} seconds.", winner, score, timer.ToString("n2"));
+                InfoText.text = string.Format("PlayerScript {0} won with {1} points.\n\n\nReturning to login screen in {2} seconds.", winner, score, timer.ToString("n2"));
 
                 yield return new WaitForEndOfFrame();
 
