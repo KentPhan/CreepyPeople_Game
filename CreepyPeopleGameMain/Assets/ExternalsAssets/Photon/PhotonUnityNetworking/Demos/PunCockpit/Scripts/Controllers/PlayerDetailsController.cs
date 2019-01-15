@@ -79,7 +79,7 @@ namespace Photon.Pun.Demo.Cockpit
             }
 
 			// PlayerNumbering extension
-            this.AddProperty("Player Number", "#" + player.GetPlayerNumber().ToString("00"), this.PlayerNumberingExtensionPanel);
+            this.AddProperty("PlayerScript Number", "#" + player.GetPlayerNumber().ToString("00"), this.PlayerNumberingExtensionPanel);
 
 
 			// Score extension
@@ -181,7 +181,7 @@ namespace Photon.Pun.Demo.Cockpit
         {
             if (_player != null)
             { // we might be called before player is setup
-                this.builtInPropsCellList["Player Number"].UpdateInfo("#" + _player.GetPlayerNumber().ToString("00"));
+                this.builtInPropsCellList["PlayerScript Number"].UpdateInfo("#" + _player.GetPlayerNumber().ToString("00"));
             }
 
         }

@@ -50,7 +50,7 @@ namespace Photon.Pun.Demo.Asteroids
             cachedRoomList = new Dictionary<string, RoomInfo>();
             roomListEntries = new Dictionary<string, GameObject>();
             
-            PlayerNameInput.text = "Player " + Random.Range(1000, 10000);
+            PlayerNameInput.text = "PlayerScript " + Random.Range(1000, 10000);
         }
 
         #endregion
@@ -242,7 +242,7 @@ namespace Photon.Pun.Demo.Asteroids
             }
             else
             {
-                Debug.LogError("Player Name is invalid.");
+                Debug.LogError("PlayerScript Name is invalid.");
             }
         }
 

@@ -3,7 +3,7 @@
 //   Part of: Asteroid Demo,
 // </copyright>
 // <summary>
-//  Player Overview Panel
+//  PlayerScript Overview Panel
 // </summary>
 // <author>developer@exitgames.com</author>
 // --------------------------------------------------------------------------------------------------------------------

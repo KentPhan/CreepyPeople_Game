@@ -3,7 +3,7 @@
 //   Part of: Asteroid Demo,
 // </copyright>
 // <summary>
-//  Player List Entry
+//  PlayerScript List Entry
 // </summary>
 // <author>developer@exitgames.com</author>
 // --------------------------------------------------------------------------------------------------------------------

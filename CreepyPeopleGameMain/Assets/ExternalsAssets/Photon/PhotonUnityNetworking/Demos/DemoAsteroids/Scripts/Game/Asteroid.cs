@@ -77,7 +77,7 @@ namespace Photon.Pun.Demo.Asteroids
                     DestroyAsteroidLocally();
                 }
             }
-            else if (collision.gameObject.CompareTag("Player"))
+            else if (collision.gameObject.CompareTag("PlayerScript"))
             {
                 if (photonView.IsMine)
                 {

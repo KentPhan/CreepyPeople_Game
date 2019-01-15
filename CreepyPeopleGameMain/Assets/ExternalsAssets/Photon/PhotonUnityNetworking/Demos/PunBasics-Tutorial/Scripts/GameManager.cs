@@ -19,7 +19,7 @@ namespace Photon.Pun.Demo.PunBasics
 
 	/// <summary>
 	/// Game manager.
-	/// Connects and watch Photon Status, Instantiate Player
+	/// Connects and watch Photon Status, Instantiate PlayerScript
 	/// Deals with quiting the room and the game
 	/// Deals with level loading (outside the in room synchronization)
 	/// </summary>
@@ -98,7 +98,7 @@ namespace Photon.Pun.Demo.PunBasics
         #region Photon Callbacks
 
         /// <summary>
-        /// Called when a Photon Player got connected. We need to then load a bigger scene.
+        /// Called when a Photon PlayerScript got connected. We need to then load a bigger scene.
         /// </summary>
         /// <param name="other">Other.</param>
         public override void OnPlayerEnteredRoom( Player other  )
@@ -114,7 +114,7 @@ namespace Photon.Pun.Demo.PunBasics
 		}
 
 		/// <summary>
-		/// Called when a Photon Player got disconnected. We need to load a smaller scene.
+		/// Called when a Photon PlayerScript got disconnected. We need to load a smaller scene.
 		/// </summary>
 		/// <param name="other">Other.</param>
 		public override void OnPlayerLeftRoom( Player other  )

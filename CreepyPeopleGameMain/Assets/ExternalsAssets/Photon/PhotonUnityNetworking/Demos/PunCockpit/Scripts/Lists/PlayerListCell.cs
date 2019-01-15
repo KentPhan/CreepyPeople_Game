@@ -3,7 +3,7 @@
 //   Part of: Photon Unity Utilities,
 // </copyright>
 // <summary>
-//  Player list cell representing a given PhotonPlayer
+//  PlayerScript list cell representing a given PhotonPlayer
 // </summary>
 // <author>developer@exitgames.com</author>
 // --------------------------------------------------------------------------------------------------------------------
@@ -19,7 +19,7 @@ using Photon.Pun.UtilityScripts;
 namespace Photon.Pun.Demo.Cockpit
 {
     /// <summary>
-    /// Player list cell representing a given PhotonPlayer
+    /// PlayerScript list cell representing a given PhotonPlayer
     /// </summary>
     public class PlayerListCell : MonoBehaviour
     {
