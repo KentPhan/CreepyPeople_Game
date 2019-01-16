@@ -52,15 +52,14 @@ namespace Assets.Scripts.Main.Managers
             if (l_Players.Length > 1)
                 Debug.LogError("More than 1 player detected on start game");
 
+
+            m_CurrentGameState = GameStates.PLAY;
+            Transform l_spawn = GameManager.Instance.GetSpawnPosition();
+
             if (m_CurrentPlayer == null)
                 m_CurrentPlayer = l_Players[0].GetComponent<PlayerScript>();
-
-            if (l_Players.Length == 0)
-            {
-                m_CurrentGameState = GameStates.PLAY;
-                Transform l_spawn = GameManager.Instance.GetSpawnPosition();
+            else
                 m_CurrentPlayer = Instantiate(PlayerPrefab, l_spawn.position, l_spawn.rotation);
-            }
         }
 
         public PlayerScript GetCurrentPlayer()
