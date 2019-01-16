@@ -20,6 +20,11 @@ namespace Assets.Scripts.Main.Characters
             {
                 FlashLight.enabled = !FlashLight.enabled;
             }
+
+            if (FlashLight.enabled)
+            {
+                // Put logic for flashlight stunning
+            }
         }
 
         public void TurnOnFlashlight()
