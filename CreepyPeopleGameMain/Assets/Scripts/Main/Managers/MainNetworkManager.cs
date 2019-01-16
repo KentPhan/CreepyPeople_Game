@@ -8,9 +8,11 @@ namespace Assets.Scripts.Main.Managers
     public enum PhotonEventCodes
     {
         MOVE_POSITION = 0,
-        FLASH_LIGHT = 1
+        FLASH_LIGHT_TOGGLE = 1,
+        FLASH_LIGHT_POWER = 2
     }
 
+    // TODO Consider Communication efficiency using this method.
     public class MainNetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
     {
         private byte maxPlayersPerRoom = 2;
@@ -51,6 +53,7 @@ namespace Assets.Scripts.Main.Managers
                 {
                     // Raise 
                     PollPlayerPosition();
+                    PollBatteryPower();
                     m_CurrentPollTime = PollRate;
                 }
 
@@ -112,7 +115,7 @@ namespace Assets.Scripts.Main.Managers
         {
             switch (photonEvent.Code)
             {
-                case (byte)PhotonEventCodes.FLASH_LIGHT:
+                case (byte)PhotonEventCodes.FLASH_LIGHT_TOGGLE:
                     {
                         object[] l_data = (object[])photonEvent.CustomData;
                         bool l_dataState = (bool)l_data[0];
@@ -130,6 +133,7 @@ namespace Assets.Scripts.Main.Managers
 
         #region -= RaiseEvents =-
 
+        // TODO Logic below look like shit. Consolidate more if you can
         private void PollPlayerPosition()
         {
             if (GameManager.Instance.GetCurrentPlayer() != null)
@@ -140,6 +144,20 @@ namespace Assets.Scripts.Main.Managers
 
                 PhotonNetwork.RaiseEvent((byte)PhotonEventCodes.MOVE_POSITION, l_data, l_raiseEventOptions, l_sendOptions);
                 //Debug.Log("Raised The Damn Event With:" + l_data[0]);
+            }
+        }
+
+        private void PollBatteryPower()
+        {
+            if (GameManager.Instance.GetCurrentPlayer() != null)
+            {
+
+                object[] l_data = new object[] { GameManager.Instance.GetCurrentPlayer().GetBatteryRatio() };
+                RaiseEventOptions l_raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+                SendOptions l_sendOptions = new SendOptions { Reliability = true };
+
+                PhotonNetwork.RaiseEvent((byte)PhotonEventCodes.FLASH_LIGHT_POWER, l_data, l_raiseEventOptions, l_sendOptions);
+                Debug.Log("Raised The Damn Event With:" + l_data[0]);
             }
         }
 
