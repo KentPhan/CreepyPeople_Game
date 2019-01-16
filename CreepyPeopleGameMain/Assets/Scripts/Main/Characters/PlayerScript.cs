@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace Assets.Scripts.Main.Characters
 {
@@ -16,7 +16,10 @@ namespace Assets.Scripts.Main.Characters
         // Update is called once per frame
         void Update()
         {
-
+            if (Input.GetButtonDown("Flashlight"))
+            {
+                FlashLight.enabled = !FlashLight.enabled;
+            }
         }
 
         public void TurnOnFlashlight()
