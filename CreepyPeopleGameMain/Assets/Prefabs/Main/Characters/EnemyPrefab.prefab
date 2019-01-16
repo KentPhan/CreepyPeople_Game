@@ -129,8 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c6ae0869d353654095d563022de9ed1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyRange: 30
-  EnemySpeed: 10
+  StunTime: 5
 --- !u!54 &6448017109959705705
 Rigidbody:
   m_ObjectHideFlags: 0
