@@ -174,7 +174,7 @@ namespace Assets.Scripts.Main.Managers
                 SendOptions l_sendOptions = new SendOptions { Reliability = true };
 
                 PhotonNetwork.RaiseEvent((byte)PhotonEventCodes.INVENTORY_STATUS, l_data, l_raiseEventOptions, l_sendOptions);
-                Debug.Log("Sent The Damn Item:" + l_data[0]);
+                //Debug.Log("Sent The Damn Item:" + l_data[0]);
             }
         }
         #endregion

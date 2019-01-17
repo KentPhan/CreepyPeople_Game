@@ -99,14 +99,14 @@ namespace Assets.Scripts.Main.Characters
                         m_CurrentInventory[l_Interactable.GetComponent<ItemComponent>().INDEX] = true;
                         MainNetworkManager.Instance.PollInventoryStatus();
 
+                        // TODO Consider if we need to respawn items
                         // Destroy Item
                         Destroy(l_Interactable);
                     }
                     else if (l_hitInfo.collider.tag.Equals("Door"))
                     {
                         // Check Key
-                        // Open Door
-                        MainNetworkManager.Instance.PollInventoryStatus();
+                        l_Interactable.GetComponent<DoorComponent>().AttemptOpen(m_CurrentInventory);
                     }
                 }
             }
