@@ -1,3 +1,4 @@
+using Assets.Scripts.Main.Characters;
 using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
@@ -7,11 +8,12 @@ namespace Assets.Scripts.Main.Managers
 {
     public enum PhotonEventCodes
     {
-        MOVE_POSITION = 0,
+        PLAYER_TRANSFORM = 0,
         FLASH_LIGHT_TOGGLE = 1,
         FLASH_LIGHT_POWER = 2,
         INVENTORY_STATUS = 3,
-        GAME_STATE = 4
+        GAME_STATE = 4,
+        ENEMY_POSITIONS = 5
     }
 
     // TODO Consider Communication efficiency using this method.
@@ -140,11 +142,12 @@ namespace Assets.Scripts.Main.Managers
         {
             if (GameManager.Instance.GetCurrentPlayer() != null)
             {
-                object[] l_data = new object[] { GameManager.Instance.GetCurrentPlayer().transform.position };
+                PlayerScript l_Player = GameManager.Instance.GetCurrentPlayer();
+                object[] l_data = new object[] { l_Player.transform.position, l_Player.transform.rotation };
                 RaiseEventOptions l_raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
                 SendOptions l_sendOptions = new SendOptions { Reliability = true };
 
-                PhotonNetwork.RaiseEvent((byte)PhotonEventCodes.MOVE_POSITION, l_data, l_raiseEventOptions, l_sendOptions);
+                PhotonNetwork.RaiseEvent((byte)PhotonEventCodes.PLAYER_TRANSFORM, l_data, l_raiseEventOptions, l_sendOptions);
                 //Debug.Log("Raised The Damn Event With:" + l_data[0]);
             }
         }
