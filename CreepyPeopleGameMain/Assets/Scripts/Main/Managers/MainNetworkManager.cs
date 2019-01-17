@@ -9,7 +9,8 @@ namespace Assets.Scripts.Main.Managers
     {
         MOVE_POSITION = 0,
         FLASH_LIGHT_TOGGLE = 1,
-        FLASH_LIGHT_POWER = 2
+        FLASH_LIGHT_POWER = 2,
+        INVENTORY_STATUS = 3
     }
 
     // TODO Consider Communication efficiency using this method.
@@ -161,6 +162,21 @@ namespace Assets.Scripts.Main.Managers
             }
         }
 
+
+        //TODO Consolidate logic to be more consistent in publics and privates here.
+        public void PollInventoryStatus()
+        {
+            if (GameManager.Instance.GetCurrentPlayer() != null)
+            {
+
+                object[] l_data = GameManager.Instance.GetCurrentPlayer().GetCurrentInventoryStatus();
+                RaiseEventOptions l_raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+                SendOptions l_sendOptions = new SendOptions { Reliability = true };
+
+                PhotonNetwork.RaiseEvent((byte)PhotonEventCodes.INVENTORY_STATUS, l_data, l_raiseEventOptions, l_sendOptions);
+                Debug.Log("Sent The Damn Item:" + l_data[0]);
+            }
+        }
         #endregion
     }
 }

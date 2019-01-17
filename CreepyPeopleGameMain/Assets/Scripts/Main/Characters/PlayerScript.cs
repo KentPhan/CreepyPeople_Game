@@ -1,3 +1,5 @@
+using Assets.Scripts.Main.Components;
+using Assets.Scripts.Main.Managers;
 using UnityEngine;
 
 namespace Assets.Scripts.Main.Characters
@@ -7,9 +9,14 @@ namespace Assets.Scripts.Main.Characters
         ON,
         OFF
     }
+
     public class PlayerScript : MonoBehaviour
     {
-        // TODO. All this code is shit for prototyping. Rebuild if we make it. Switch to a more modular component system
+        // TODO. All this code is shit for prototyping. Rebuild if we make it. Switch to a more modular component system. Magic Strings
+
+        // Interact shit
+        [SerializeField] private float InteractRange = 20.0f;
+
         // Flash light shit
         [SerializeField]
         private Light FlashLight;
@@ -31,22 +38,29 @@ namespace Assets.Scripts.Main.Characters
 
         // Cached Shit
         private int m_EnemyMask;
+        private int m_InteractableMask;
+        private object[] m_CurrentInventory;
 
         // Start is called before the first frame update
         void Start()
         {
             // Initalize
             m_CurrentPhoneState = PhoneStates.ON;
+            m_CurrentInventory = new object[5];
+
 
             // Cache
             FlashLight.enabled = false;
             m_EnemyMask = LayerMask.GetMask("Enemy");
+            m_InteractableMask = LayerMask.GetMask("Item", "Interactable");
         }
 
         // Update is called once per frame
         void Update()
         {
             float l_deltaTime = Time.deltaTime;
+
+            // Phone Flashlight stuff
             if (m_CurrentPhoneState == PhoneStates.ON)
             {
                 if (Input.GetButtonDown("Flashlight"))
@@ -70,6 +84,32 @@ namespace Assets.Scripts.Main.Characters
 
                 m_CurrentBatteryPower -= (PhoneBatteryDrainRate * l_deltaTime);
             }
+
+            if (Input.GetButtonDown("Interact"))
+            {
+                RaycastHit l_hitInfo;
+                Ray l_InteractRay = new Ray(transform.position, transform.forward);
+                if (Physics.Raycast(l_InteractRay, out l_hitInfo, InteractRange, m_InteractableMask,
+                    QueryTriggerInteraction.Collide))
+                {
+                    GameObject l_Interactable = l_hitInfo.collider.gameObject;
+                    if (l_Interactable.tag.Equals("Item"))
+                    {
+                        // Add to inventory
+                        m_CurrentInventory[l_Interactable.GetComponent<ItemComponent>().INDEX] = true;
+                        MainNetworkManager.Instance.PollInventoryStatus();
+
+                        // Destroy Item
+                        Destroy(l_Interactable);
+                    }
+                    else if (l_hitInfo.collider.tag.Equals("Door"))
+                    {
+                        // Check Key
+                        // Open Door
+                        MainNetworkManager.Instance.PollInventoryStatus();
+                    }
+                }
+            }
         }
 
         public void TurnOnFlashlight()
@@ -86,6 +126,11 @@ namespace Assets.Scripts.Main.Characters
         public float GetBatteryRatio()
         {
             return (m_CurrentBatteryPower / MaxBatteryPower);
+        }
+
+        public object[] GetCurrentInventoryStatus()
+        {
+            return m_CurrentInventory;
         }
     }
 }
