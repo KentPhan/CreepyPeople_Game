@@ -157,7 +157,7 @@ namespace Assets.Scripts.Main.Managers
                 SendOptions l_sendOptions = new SendOptions { Reliability = true };
 
                 PhotonNetwork.RaiseEvent((byte)PhotonEventCodes.FLASH_LIGHT_POWER, l_data, l_raiseEventOptions, l_sendOptions);
-                Debug.Log("Raised The Damn Event With:" + l_data[0]);
+                //Debug.Log("Raised The Damn Event With:" + l_data[0]);
             }
         }
 
