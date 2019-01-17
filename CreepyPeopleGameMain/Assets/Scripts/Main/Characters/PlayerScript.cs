@@ -1,6 +1,7 @@
 using Assets.Scripts.Main.Components;
 using Assets.Scripts.Main.Managers;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 namespace Assets.Scripts.Main.Characters
 {
@@ -8,6 +9,12 @@ namespace Assets.Scripts.Main.Characters
     {
         ON,
         OFF
+    }
+
+    public enum PlayerStates
+    {
+        ALIVE,
+        DEAD
     }
 
     public class PlayerScript : MonoBehaviour
@@ -35,11 +42,15 @@ namespace Assets.Scripts.Main.Characters
         private PhoneStates m_CurrentPhoneState;
 
 
+        // Life Shit
+        private PlayerStates m_CurrentPlayerState;
+
 
         // Cached Shit
         private int m_EnemyMask;
         private int m_InteractableMask;
         private object[] m_CurrentInventory;
+        private FirstPersonController m_FirstPersonController;
 
         // Start is called before the first frame update
         void Start()
@@ -47,17 +58,32 @@ namespace Assets.Scripts.Main.Characters
             // Initalize
             m_CurrentPhoneState = PhoneStates.ON;
             m_CurrentInventory = new object[5];
+            m_CurrentPlayerState = PlayerStates.ALIVE;
 
 
             // Cache
-            FlashLight.enabled = false;
+            FlashLight.enabled = true;
             m_EnemyMask = LayerMask.GetMask("Enemy");
             m_InteractableMask = LayerMask.GetMask("Item", "Interactable");
+            m_FirstPersonController = GetComponent<FirstPersonController>();
+        }
+
+        public void RestartPlayer()
+        {
+            m_CurrentPhoneState = PhoneStates.ON;
+            m_CurrentInventory = new object[5];
+            m_CurrentPlayerState = PlayerStates.ALIVE;
+
+            //m_FirstPersonController.enabled = true;
+            FlashLight.enabled = false;
         }
 
         // Update is called once per frame
         void Update()
         {
+            if (m_CurrentPlayerState == PlayerStates.DEAD)
+                return;
+
             float l_deltaTime = Time.deltaTime;
 
             // Phone Flashlight stuff
@@ -110,6 +136,13 @@ namespace Assets.Scripts.Main.Characters
                     }
                 }
             }
+        }
+
+        public void KillPlayer()
+        {
+            m_CurrentPlayerState = PlayerStates.DEAD;
+            m_FirstPersonController.enabled = false;
+            GameManager.Instance.TriggerGameOver();
         }
 
         public void TurnOnFlashlight()

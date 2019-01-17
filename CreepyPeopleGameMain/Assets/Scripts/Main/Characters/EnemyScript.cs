@@ -8,7 +8,8 @@ namespace Assets.Scripts.Main.Characters
     public enum EnemyStates
     {
         ACTIVE,
-        STUNNED
+        STUNNED,
+        DORMANT
     }
 
     [RequireComponent(typeof(NavMeshAgent))]
@@ -16,17 +17,31 @@ namespace Assets.Scripts.Main.Characters
     {
         //[SerializeField] private float EnemyRange = 30.0f;
 
+        [SerializeField] private Transform EnemySpawnLocation;
+
         private PlayerScript m_Player;
         private NavMeshAgent m_Agent;
         private EnemyStates m_CurrentState;
         private float m_CurrentStunTime;
 
 
+
         // Start is called before the first frame update
         void Start()
         {
+            transform.position = EnemySpawnLocation.position;
+            transform.rotation = EnemySpawnLocation.rotation;
             m_Agent = GetComponent<NavMeshAgent>();
             m_Player = GameManager.Instance.GetCurrentPlayer();
+            m_CurrentState = EnemyStates.ACTIVE;
+        }
+
+        public void RestartEnemy()
+        {
+            transform.position = EnemySpawnLocation.position;
+            transform.rotation = EnemySpawnLocation.rotation;
+            m_Agent.enabled = true;
+            m_CurrentState = EnemyStates.ACTIVE;
         }
 
         // Update is called once per frame
@@ -49,6 +64,8 @@ namespace Assets.Scripts.Main.Characters
                         m_Agent.enabled = true;
                     }
                     break;
+                case EnemyStates.DORMANT:
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -59,6 +76,17 @@ namespace Assets.Scripts.Main.Characters
             m_CurrentStunTime = i_StunTime;
             m_Agent.enabled = false;
             return;
+        }
+
+        // Collision
+        public void OnTriggerEnter(Collider i_colliider)
+        {
+            if (i_colliider.gameObject.tag.Equals("Player"))
+            {
+                i_colliider.gameObject.GetComponent<PlayerScript>().KillPlayer();
+                m_Agent.enabled = false;
+                m_CurrentState = EnemyStates.DORMANT;
+            }
         }
     }
 }

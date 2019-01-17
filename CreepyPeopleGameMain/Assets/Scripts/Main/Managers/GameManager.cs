@@ -1,3 +1,4 @@
+using System;
 using Assets.Scripts.Main.Characters;
 using UnityEngine;
 
@@ -42,7 +43,19 @@ namespace Assets.Scripts.Main.Managers
         // Update is called once per frame
         void Update()
         {
-
+            switch (m_CurrentGameState)
+            {
+                case GameStates.START:
+                    break;
+                case GameStates.PLAY:
+                    break;
+                case GameStates.GAMEOVER:
+                    if (Input.GetButtonDown("Submit"))
+                        RestartGame();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         public void StartGame()
@@ -62,6 +75,31 @@ namespace Assets.Scripts.Main.Managers
                 else
                     m_CurrentPlayer = Instantiate(PlayerPrefab, l_spawn.position, l_spawn.rotation);
             }
+        }
+
+        public void TriggerGameOver()
+        {
+            MainCanvasManager.Instance.ShowGameOver();
+            m_CurrentGameState = GameStates.GAMEOVER;
+        }
+
+        public void RestartGame()
+        {
+            // Player. Destroying and Recreating player because the First Person Controller is Fucking with me
+            Destroy(m_CurrentPlayer.gameObject);
+            Transform l_spawn = GameManager.Instance.GetSpawnPosition();
+            m_CurrentPlayer = Instantiate(PlayerPrefab, l_spawn.position, l_spawn.rotation);
+
+            // Enemies
+            foreach (GameObject l_enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+            {
+                l_enemy.GetComponent<EnemyScript>().RestartEnemy();
+            }
+
+            // UI
+            MainCanvasManager.Instance.Reset();
+
+            // Reset Mobile App somehow?
         }
 
         public PlayerScript GetCurrentPlayer()

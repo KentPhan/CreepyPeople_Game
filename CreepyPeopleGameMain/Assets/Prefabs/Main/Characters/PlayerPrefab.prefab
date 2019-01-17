@@ -680,4 +680,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea3102d93ac664e4090fe28f26567080, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InteractRange: 20
   FlashLight: {fileID: 2133508837}
+  FlashLightStunTime: 5
+  FlashLightStunRange: 20
+  FlashLightBatteryDrainRate: 1
+  MaxBatteryPower: 100
+  PhoneBatteryDrainRate: 1

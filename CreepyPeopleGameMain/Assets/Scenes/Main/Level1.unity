@@ -282,6 +282,36 @@ Transform:
   m_Father: {fileID: 116013513}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &817220740
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 817220741}
+  m_Layer: 0
+  m_Name: EnemySpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &817220741
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817220740}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 79.88485, y: 6.6466045, z: 136.22687}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1130760155
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,6 +693,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4311185688904780415, guid: 50022dc31d99d3c42ac2fb14810a1a4a,
+        type: 3}
+      propertyPath: EnemySpawnLocation
+      value: 
+      objectReference: {fileID: 817220741}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50022dc31d99d3c42ac2fb14810a1a4a, type: 3}
 --- !u!1001 &8581931407170802157
@@ -737,12 +772,6 @@ PrefabInstance:
       propertyPath: SpawnPosition
       value: 
       objectReference: {fileID: 1709507176}
-    - target: {fileID: 3568804368237414546, guid: 1f18b9f855cdaaf499085ff8d818aa39,
-        type: 3}
-      propertyPath: PlayerPrefab
-      value: 
-      objectReference: {fileID: 1591944101471515866, guid: ef369a2ae392e154bae14211ca1c02e4,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f18b9f855cdaaf499085ff8d818aa39, type: 3}
 --- !u!1001 &8793566135653511295

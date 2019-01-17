@@ -10,7 +10,8 @@ namespace Assets.Scripts.Main.Managers
         MOVE_POSITION = 0,
         FLASH_LIGHT_TOGGLE = 1,
         FLASH_LIGHT_POWER = 2,
-        INVENTORY_STATUS = 3
+        INVENTORY_STATUS = 3,
+        GAME_STATE = 4
     }
 
     // TODO Consider Communication efficiency using this method.
