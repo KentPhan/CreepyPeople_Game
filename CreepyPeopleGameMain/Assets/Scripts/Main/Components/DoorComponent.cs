@@ -1,3 +1,4 @@
+using Assets.Scripts.Main.Characters;
 using Assets.Scripts.Main.Managers;
 using UnityEngine;
 
@@ -10,6 +11,9 @@ namespace Assets.Scripts.Main.Components
 
         [SerializeField]
         private int m_KeyINDEX;
+
+        [SerializeField]
+        private EnemyScript[] m_EnemiesToTriggerOnOpen;
 
         // Start is called before the first frame update
         void Start()
@@ -34,6 +38,12 @@ namespace Assets.Scripts.Main.Components
                 m_Locked = false;
                 i_Inventory[m_KeyINDEX] = false;
                 MainNetworkManager.Instance.PollInventoryStatus();
+
+                // Trigger Enemies if Any
+                foreach (EnemyScript l_Enemy in m_EnemiesToTriggerOnOpen)
+                {
+                    l_Enemy.WakeUp();
+                }
             }
         }
     }

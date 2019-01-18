@@ -33,7 +33,7 @@ namespace Assets.Scripts.Main.Characters
             transform.rotation = EnemySpawnLocation.rotation;
             m_Agent = GetComponent<NavMeshAgent>();
             m_Player = GameManager.Instance.GetCurrentPlayer();
-            m_CurrentState = EnemyStates.ACTIVE;
+            m_CurrentState = EnemyStates.DORMANT;
         }
 
         public void RestartEnemy()
@@ -41,7 +41,7 @@ namespace Assets.Scripts.Main.Characters
             transform.position = EnemySpawnLocation.position;
             transform.rotation = EnemySpawnLocation.rotation;
             m_Agent.enabled = true;
-            m_CurrentState = EnemyStates.ACTIVE;
+            m_CurrentState = EnemyStates.DORMANT;
         }
 
         // Update is called once per frame
@@ -76,6 +76,11 @@ namespace Assets.Scripts.Main.Characters
             m_CurrentStunTime = i_StunTime;
             m_Agent.enabled = false;
             return;
+        }
+
+        public void WakeUp()
+        {
+            m_CurrentState = EnemyStates.ACTIVE;
         }
 
         // Collision
