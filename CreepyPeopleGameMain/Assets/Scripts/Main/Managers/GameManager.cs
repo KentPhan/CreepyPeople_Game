@@ -1,14 +1,14 @@
-using System;
 using Assets.Scripts.Main.Characters;
+using System;
 using UnityEngine;
 
 namespace Assets.Scripts.Main.Managers
 {
     public enum GameStates
     {
-        START,
-        PLAY,
-        GAMEOVER
+        START = 0,
+        PLAY = 1,
+        GAMEOVER = 2
     }
 
     public class GameManager : MonoBehaviour
@@ -66,6 +66,7 @@ namespace Assets.Scripts.Main.Managers
                 Debug.LogError("More than 1 player detected on start game");
 
             m_CurrentGameState = GameStates.PLAY;
+            MainNetworkManager.Instance.PollGameState();
             Transform l_spawn = GameManager.Instance.GetSpawnPosition();
 
             if (m_CurrentPlayer == null)
@@ -81,6 +82,7 @@ namespace Assets.Scripts.Main.Managers
         {
             MainCanvasManager.Instance.ShowGameOver();
             m_CurrentGameState = GameStates.GAMEOVER;
+            MainNetworkManager.Instance.PollGameState();
         }
 
         public void RestartGame()
@@ -99,7 +101,8 @@ namespace Assets.Scripts.Main.Managers
             // UI
             MainCanvasManager.Instance.Reset();
 
-            // Reset Mobile App somehow?
+            // Reset Mobile
+            MainNetworkManager.Instance.PollGameState();
         }
 
         public PlayerScript GetCurrentPlayer()

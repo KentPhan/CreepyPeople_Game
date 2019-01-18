@@ -89,6 +89,16 @@ namespace Assets.Scripts.Main.Characters
             // Phone Flashlight stuff
             if (m_CurrentPhoneState == PhoneStates.ON)
             {
+                // Check if Phone is Off
+                if (m_CurrentBatteryPower <= 0)
+                {
+                    m_CurrentPhoneState = PhoneStates.OFF;
+                    FlashLight.enabled = false;
+                    MainNetworkManager.Instance.PollBatteryPower();
+                    return;
+                }
+
+                // Keyboard Input for TEMP
                 if (Input.GetButtonDown("Flashlight"))
                 {
                     FlashLight.enabled = !FlashLight.enabled;
@@ -110,6 +120,16 @@ namespace Assets.Scripts.Main.Characters
 
                 m_CurrentBatteryPower -= (PhoneBatteryDrainRate * l_deltaTime);
             }
+            else
+            {
+                if (m_CurrentBatteryPower > 0)
+                {
+                    m_CurrentPhoneState = PhoneStates.ON;
+                    MainNetworkManager.Instance.PollBatteryPower();
+                }
+            }
+
+            // Recharge Logic can go here.
 
             if (Input.GetButtonDown("Interact"))
             {

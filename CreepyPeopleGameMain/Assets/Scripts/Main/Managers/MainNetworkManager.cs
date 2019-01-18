@@ -152,7 +152,7 @@ namespace Assets.Scripts.Main.Managers
             }
         }
 
-        private void PollBatteryPower()
+        public void PollBatteryPower()
         {
             if (GameManager.Instance.GetCurrentPlayer() != null)
             {
@@ -179,6 +179,19 @@ namespace Assets.Scripts.Main.Managers
 
                 PhotonNetwork.RaiseEvent((byte)PhotonEventCodes.INVENTORY_STATUS, l_data, l_raiseEventOptions, l_sendOptions);
                 //Debug.Log("Sent The Damn Item:" + l_data[0]);
+            }
+        }
+
+        public void PollGameState()
+        {
+            if (GameManager.Instance.GetCurrentPlayer() != null)
+            {
+
+                object[] l_data = new object[] { GameManager.Instance.GetCurrentGameState() };
+                RaiseEventOptions l_raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+                SendOptions l_sendOptions = new SendOptions { Reliability = true };
+
+                PhotonNetwork.RaiseEvent((byte)PhotonEventCodes.GAME_STATE, l_data, l_raiseEventOptions, l_sendOptions);
             }
         }
         #endregion
