@@ -59,6 +59,7 @@ namespace Assets.Scripts.Main.Characters
             m_CurrentPhoneState = PhoneStates.ON;
             m_CurrentInventory = new object[5];
             m_CurrentPlayerState = PlayerStates.ALIVE;
+            m_CurrentBatteryPower = MaxBatteryPower;
 
 
             // Cache
@@ -73,6 +74,7 @@ namespace Assets.Scripts.Main.Characters
             m_CurrentPhoneState = PhoneStates.ON;
             m_CurrentInventory = new object[5];
             m_CurrentPlayerState = PlayerStates.ALIVE;
+            m_CurrentBatteryPower = MaxBatteryPower;
 
             //m_FirstPersonController.enabled = true;
             FlashLight.enabled = false;
