@@ -80,7 +80,6 @@ namespace Assets.Scripts.Main.Managers
         public override void OnConnectedToMaster()
         {
             PhotonNetwork.JoinOrCreateRoom("One", null, null);
-
             Debug.Log("Connected to Master");
         }
 
