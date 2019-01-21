@@ -21,8 +21,12 @@ namespace Assets.Scripts.Main.Characters
     {
         // TODO. All this code is shit for prototyping. Rebuild if we make it. Switch to a more modular component system. Magic Strings
 
+        // Camera
+        [SerializeField] private Camera CameraReference;
+
         // Interact shit
         [SerializeField] private float InteractRange = 20.0f;
+
 
         // Flash light shit
         [SerializeField]
@@ -91,6 +95,7 @@ namespace Assets.Scripts.Main.Characters
         // Update is called once per frame
         void Update()
         {
+
             if (m_CurrentPlayerState == PlayerStates.DEAD)
                 return;
 
@@ -118,7 +123,7 @@ namespace Assets.Scripts.Main.Characters
                 if (FlashLight.enabled)
                 {
                     RaycastHit l_hitInfo;
-                    Ray l_FlashlightRay = new Ray(transform.position, transform.forward);
+                    Ray l_FlashlightRay = new Ray(CameraReference.transform.position, CameraReference.transform.forward);
                     if (Physics.Raycast(l_FlashlightRay, out l_hitInfo, FlashLightStunRange, m_EnemyMask,
                         QueryTriggerInteraction.Collide))
                     {
@@ -145,7 +150,7 @@ namespace Assets.Scripts.Main.Characters
             {
                 Debug.Log("Checking Raycase");
                 RaycastHit l_hitInfo;
-                Ray l_InteractRay = new Ray(transform.position, transform.forward);
+                Ray l_InteractRay = new Ray(CameraReference.transform.position, CameraReference.transform.forward);
                 if (Physics.Raycast(l_InteractRay, out l_hitInfo, InteractRange, m_InteractableMask,
                     QueryTriggerInteraction.Collide))
                 {
