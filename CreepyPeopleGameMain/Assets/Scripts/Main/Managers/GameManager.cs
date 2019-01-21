@@ -46,6 +46,10 @@ namespace Assets.Scripts.Main.Managers
             switch (m_CurrentGameState)
             {
                 case GameStates.START:
+                    if (Input.GetButtonDown("Submit"))
+                    {
+                        StartGame();
+                    }
                     break;
                 case GameStates.PLAY:
                     break;
@@ -76,6 +80,11 @@ namespace Assets.Scripts.Main.Managers
                 else
                     m_CurrentPlayer = Instantiate(PlayerPrefab, l_spawn.position, l_spawn.rotation);
             }
+
+            // UI Shit
+            MainCanvasManager l_Canvas = MainCanvasManager.Instance;
+            l_Canvas.SetRoomNameText(MainNetworkManager.Instance.GetRoomName());
+            l_Canvas.ShowPlayMode();
         }
 
         public void TriggerGameOver()

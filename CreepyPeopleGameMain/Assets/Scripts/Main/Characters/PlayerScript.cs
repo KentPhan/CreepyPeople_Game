@@ -58,6 +58,10 @@ namespace Assets.Scripts.Main.Characters
             // Initalize
             m_CurrentPhoneState = PhoneStates.ON;
             m_CurrentInventory = new object[5];
+            for (int i = 0; i < m_CurrentInventory.Length; i++)
+            {
+                m_CurrentInventory[i] = false;
+            }
             m_CurrentPlayerState = PlayerStates.ALIVE;
             m_CurrentBatteryPower = MaxBatteryPower;
 
@@ -73,6 +77,10 @@ namespace Assets.Scripts.Main.Characters
         {
             m_CurrentPhoneState = PhoneStates.ON;
             m_CurrentInventory = new object[5];
+            for (int i = 0; i < m_CurrentInventory.Length; i++)
+            {
+                m_CurrentInventory[i] = false;
+            }
             m_CurrentPlayerState = PlayerStates.ALIVE;
             m_CurrentBatteryPower = MaxBatteryPower;
 
@@ -135,6 +143,7 @@ namespace Assets.Scripts.Main.Characters
 
             if (Input.GetButtonDown("Interact"))
             {
+                Debug.Log("Checking Raycase");
                 RaycastHit l_hitInfo;
                 Ray l_InteractRay = new Ray(transform.position, transform.forward);
                 if (Physics.Raycast(l_InteractRay, out l_hitInfo, InteractRange, m_InteractableMask,

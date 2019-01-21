@@ -6,10 +6,12 @@ namespace Assets.Scripts.Main.Managers
     public class MainCanvasManager : MonoBehaviour
     {
         [SerializeField] private RectTransform StartScreen;
+        [SerializeField] private Camera StartCamera;
         [SerializeField] private RectTransform GameOverScreen;
 
         [SerializeField] private Text ConnectionText;
         [SerializeField] private Text TransformText;
+        [SerializeField] private Text RoomNameText;
 
         public static MainCanvasManager Instance;
 
@@ -44,6 +46,19 @@ namespace Assets.Scripts.Main.Managers
         public void SetTransformText(string i_text)
         {
             TransformText.text = i_text;
+        }
+
+        public void SetRoomNameText(string i_text)
+        {
+            RoomNameText.text = i_text;
+        }
+
+        public void ShowPlayMode()
+        {
+            if (StartScreen)
+                StartScreen.gameObject.SetActive(false);
+            if (StartCamera)
+                StartCamera.gameObject.SetActive(false);
         }
 
         public void ShowGameOver()

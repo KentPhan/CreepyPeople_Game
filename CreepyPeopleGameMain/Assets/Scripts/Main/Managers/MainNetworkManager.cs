@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Assets.Scripts.Main.Characters;
 using ExitGames.Client.Photon;
 using Photon.Pun;
@@ -23,13 +24,16 @@ namespace Assets.Scripts.Main.Managers
 
         public string versionName = "0.1";
 
-        [SerializeField]
-        private float PollRate = 2.0f;
+        [SerializeField] private float PollRate = 2.0f;
 
 
         private float m_CurrentPollTime = 0.0f;
 
         public static MainNetworkManager Instance;
+
+        public string[] m_RoomNames;
+
+        private string m_RoomName;
 
         private void Awake()
         {
@@ -38,6 +42,25 @@ namespace Assets.Scripts.Main.Managers
 
             else if (Instance != this)
                 Destroy(gameObject);
+
+            m_RoomNames = new string[]
+            {
+                "Ugh",
+                "Bleh",
+                "Boop",
+                "Brah",
+                "Scream",
+                "Run",
+                "Hide",
+                "TheLight",
+                "Craptastic",
+                "A",
+                "B",
+                "C",
+                "D"
+            };
+
+            m_RoomName = m_RoomNames[Random.Range(0, m_RoomNames.Length - 1)];
 
             DontDestroyOnLoad(gameObject);
         }
@@ -77,10 +100,21 @@ namespace Assets.Scripts.Main.Managers
         }
 
 
+        public override void OnRoomListUpdate(List<RoomInfo> roomList)
+        {
+            base.OnRoomListUpdate(roomList);
+        }
+
+
         public override void OnConnectedToMaster()
         {
-            PhotonNetwork.JoinOrCreateRoom("One", null, null);
+            PhotonNetwork.JoinOrCreateRoom(m_RoomName, null, null);
             Debug.Log("Connected to Master");
+        }
+
+        public string GetRoomName()
+        {
+            return m_RoomName;
         }
 
         public override void OnJoinedLobby()
@@ -88,16 +122,35 @@ namespace Assets.Scripts.Main.Managers
             Debug.Log("Joined Lobby");
         }
 
+        public override void OnCreatedRoom()
+        {
+            Debug.Log("Created Room");
+            base.OnCreatedRoom();
+        }
+
+        public override void OnCreateRoomFailed(short returnCode, string message)
+        {
+            Debug.LogWarning($"Failed to Create Room {message}");
+            base.OnCreateRoomFailed(returnCode, message);
+        }
+
         public override void OnJoinedRoom()
         {
             // Need to move this somewhere else later
-            GameManager.Instance.StartGame();
+            //GameManager.Instance.StartGame();
+            MainCanvasManager.Instance.SetRoomNameText(m_RoomName);
             Debug.Log("Joined Room");
         }
 
         private void OnFailedToConnectToPhoton()
         {
             Debug.Log("Disconnected from Network...");
+        }
+
+        public override void OnDisconnected(DisconnectCause i_cause)
+        {
+            Debug.LogWarningFormat("OnDisconnected() was called by PUN with reason {0}.", i_cause);
+            //PhotonNetwork.ReconnectAndRejoin();
         }
 
         #endregion
