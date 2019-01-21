@@ -1,16 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DannyScream : MonoBehaviour
 {
 
     public AudioClip SoundToPlay;
+    //public float Volume;
     public AudioSource audio;
     public bool alreadyPlayed = false;
 
 
-        void Start()
+    void Start()
     {
         audio = GetComponent<AudioSource>();
     }
