@@ -11,7 +11,7 @@ public class DannyScream : MonoBehaviour
 
     void Start()
     {
-        audio = GetComponent<AudioSource>();
+        
     }
 
     void OnTriggerEnter()
