@@ -1,8 +1,8 @@
-using System.Collections.Generic;
 using Assets.Scripts.Main.Characters;
 using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Main.Managers
@@ -109,6 +109,7 @@ namespace Assets.Scripts.Main.Managers
         public override void OnConnectedToMaster()
         {
             PhotonNetwork.JoinOrCreateRoom(m_RoomName, null, null);
+            //PhotonNetwork.GetCustomRoomList();
             Debug.Log("Connected to Master");
         }
 
