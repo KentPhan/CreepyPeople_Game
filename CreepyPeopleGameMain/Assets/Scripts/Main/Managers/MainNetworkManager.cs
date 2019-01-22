@@ -190,6 +190,15 @@ namespace Assets.Scripts.Main.Managers
         #region -= RaiseEvents =-
 
         // TODO Logic below look like shit. Consolidate more if you can
+        public void PollInitialFlashLight(bool i_newState)
+        {
+            object[] l_content = new object[] { i_newState };
+            RaiseEventOptions l_eventOptions = new RaiseEventOptions() { Receivers = ReceiverGroup.All };
+            SendOptions l_sendOptions = new SendOptions() { Reliability = true };
+            PhotonNetwork.RaiseEvent((byte)PhotonEventCodes.FLASH_LIGHT_TOGGLE, l_content, l_eventOptions, l_sendOptions);
+        }
+
+
         private void PollPlayerPosition()
         {
             if (GameManager.Instance.GetCurrentPlayer() != null)

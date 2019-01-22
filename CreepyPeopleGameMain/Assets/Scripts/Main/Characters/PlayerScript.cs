@@ -191,6 +191,11 @@ namespace Assets.Scripts.Main.Characters
             FlashLight.enabled = false;
         }
 
+        public bool IsFlashLightOn()
+        {
+            return FlashLight.enabled;
+        }
+
         // TODO for future reference. Consolidate battery drain logic on either mobile or pc side. Currently on PC side, consider mobile side. Costs and benefits for either
         public float GetBatteryRatio()
         {

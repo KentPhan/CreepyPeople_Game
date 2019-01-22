@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8188129621371238773}
   - component: {fileID: 871216970877079063}
   m_Layer: 0
-  m_Name: NetworkManager
+  m_Name: MainNetworkManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,6 +44,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   versionName: 0.1
-  startScreen: {fileID: 0}
-  connectedScreen: {fileID: 0}
-  disconnectedScreen: {fileID: 0}
+  PollRate: 0.5
+  m_RoomNames: []

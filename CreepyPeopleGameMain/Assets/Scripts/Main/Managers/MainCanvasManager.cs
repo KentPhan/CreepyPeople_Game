@@ -55,10 +55,8 @@ namespace Assets.Scripts.Main.Managers
 
         public void ShowPlayMode()
         {
-            if (StartScreen)
-                StartScreen.gameObject.SetActive(false);
-            if (StartCamera)
-                StartCamera.gameObject.SetActive(false);
+            StartScreen.gameObject.SetActive(false);
+            StartCamera.gameObject.SetActive(false);
         }
 
         public void ShowGameOver()
@@ -69,6 +67,8 @@ namespace Assets.Scripts.Main.Managers
         public void Reset()
         {
             GameOverScreen.gameObject.SetActive(false);
+            StartScreen.gameObject.SetActive(true);
+            StartCamera.gameObject.SetActive(true);
         }
     }
 }

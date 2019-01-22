@@ -6,9 +6,10 @@ namespace Assets.Scripts.Main.Managers
 {
     public enum GameStates
     {
-        START = 0,
-        PLAY = 1,
-        GAMEOVER = 2
+        NOT_IN_ROOM = 0,
+        START = 1,
+        PLAY = 2,
+        GAMEOVER = 3
     }
 
     public class GameManager : MonoBehaviour
@@ -81,6 +82,10 @@ namespace Assets.Scripts.Main.Managers
                     m_CurrentPlayer = Instantiate(PlayerPrefab, l_spawn.position, l_spawn.rotation);
             }
 
+            // Poll initial Flashlight
+            MainNetworkManager.Instance.PollInitialFlashLight(m_CurrentPlayer.IsFlashLightOn());
+
+
             // UI Shit
             MainCanvasManager l_Canvas = MainCanvasManager.Instance;
             l_Canvas.SetRoomNameText(MainNetworkManager.Instance.GetRoomName());
@@ -98,8 +103,6 @@ namespace Assets.Scripts.Main.Managers
         {
             // Player. Destroying and Recreating player because the First Person Controller is Fucking with me
             Destroy(m_CurrentPlayer.gameObject);
-            Transform l_spawn = GameManager.Instance.GetSpawnPosition();
-            m_CurrentPlayer = Instantiate(PlayerPrefab, l_spawn.position, l_spawn.rotation);
 
             // Enemies
             foreach (GameObject l_enemy in GameObject.FindGameObjectsWithTag("Enemy"))
@@ -111,6 +114,7 @@ namespace Assets.Scripts.Main.Managers
             MainCanvasManager.Instance.Reset();
 
             // Reset Mobile
+            m_CurrentGameState = GameStates.START;
             MainNetworkManager.Instance.PollGameState();
         }
 
