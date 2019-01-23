@@ -1,5 +1,5 @@
-using System;
 using Assets.Scripts.Main.Managers;
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -81,6 +81,11 @@ namespace Assets.Scripts.Main.Characters
         public void WakeUp()
         {
             m_CurrentState = EnemyStates.ACTIVE;
+        }
+
+        public bool IsDormant()
+        {
+            return (m_CurrentState == EnemyStates.DORMANT);
         }
 
         // Collision

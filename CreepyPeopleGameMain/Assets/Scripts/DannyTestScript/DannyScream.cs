@@ -4,14 +4,12 @@ public class DannyScream : MonoBehaviour
 {
 
     public AudioClip SoundToPlay;
-    //public float Volume;
     public AudioSource audio;
     public bool alreadyPlayed = false;
 
-
     void Start()
     {
-        
+
     }
 
     void OnTriggerEnter()
