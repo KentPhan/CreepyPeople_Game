@@ -52,12 +52,8 @@ namespace Assets.Scripts.Main.Managers
                 "Scream",
                 "Run",
                 "Hide",
-                "TheLight",
-                "Craptastic",
-                "A",
-                "B",
-                "C",
-                "D"
+                "Light",
+                "Crap"
             };
 
             m_RoomName = m_RoomNames[Random.Range(0, m_RoomNames.Length - 1)];
