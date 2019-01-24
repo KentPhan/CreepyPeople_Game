@@ -43,9 +43,6 @@ namespace Assets.Scripts.Main.Components
         }
         public void OnTriggerEnter()
         {
-            Debug.Log("Trigger Area");
-
-
             if (!Triggered)
             {
                 // Trigger Audio
@@ -64,8 +61,8 @@ namespace Assets.Scripts.Main.Components
                 // Transforms
                 foreach (TransformTriggers l_Transform in MovementToTrigger)
                 {
-                    l_Transform.Object.transform.position = l_Transform.NewTransform.position:
-                    l_Transform.Object.transform.rotation = l_Transform.NewTransform.rotation:
+                    l_Transform.Object.transform.position = l_Transform.NewTransform.position;
+                    l_Transform.Object.transform.rotation = l_Transform.NewTransform.rotation;
                 }
 
                 Triggered = true;

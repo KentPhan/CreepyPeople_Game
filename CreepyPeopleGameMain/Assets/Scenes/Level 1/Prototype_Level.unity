@@ -16366,7 +16366,7 @@ Transform:
   m_Children:
   - {fileID: 822562595}
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &973658302 stripped
 Transform:
@@ -16928,7 +16928,7 @@ PrefabInstance:
     - target: {fileID: 1110562366250453611, guid: 392bc26e453374649b08a7e74ecd0c4d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 24
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 1110562366250453611, guid: 392bc26e453374649b08a7e74ecd0c4d,
         type: 3}
@@ -40328,79 +40328,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2b6421434501554586b730d59ae6584, type: 3}
---- !u!1001 &7728523310708487030
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 7728523310830489531, guid: f8cd0d3b39f48d84095b0ff88f6001aa,
-        type: 3}
-      propertyPath: m_Name
-      value: TriggerArea
-      objectReference: {fileID: 0}
-    - target: {fileID: 7728523310830489529, guid: f8cd0d3b39f48d84095b0ff88f6001aa,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 121.58
-      objectReference: {fileID: 0}
-    - target: {fileID: 7728523310830489529, guid: f8cd0d3b39f48d84095b0ff88f6001aa,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 7728523310830489529, guid: f8cd0d3b39f48d84095b0ff88f6001aa,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3.87
-      objectReference: {fileID: 0}
-    - target: {fileID: 7728523310830489529, guid: f8cd0d3b39f48d84095b0ff88f6001aa,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7728523310830489529, guid: f8cd0d3b39f48d84095b0ff88f6001aa,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7728523310830489529, guid: f8cd0d3b39f48d84095b0ff88f6001aa,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7728523310830489529, guid: f8cd0d3b39f48d84095b0ff88f6001aa,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7728523310830489529, guid: f8cd0d3b39f48d84095b0ff88f6001aa,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 7728523310830489529, guid: f8cd0d3b39f48d84095b0ff88f6001aa,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7728523310830489529, guid: f8cd0d3b39f48d84095b0ff88f6001aa,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7728523310830489529, guid: f8cd0d3b39f48d84095b0ff88f6001aa,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1879389084, guid: f8cd0d3b39f48d84095b0ff88f6001aa, type: 3}
-      propertyPath: m_Name
-      value: TriggerArea
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f8cd0d3b39f48d84095b0ff88f6001aa, type: 3}
 --- !u!4 &8127357802695272544 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8127357802695272544, guid: 558f8cd657bd0234eba4f02d34a09dbf,

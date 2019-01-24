@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 682878123}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.9858085, y: -0.41747642, z: 9.514532}
+  m_LocalPosition: {x: 0.84, y: -0.41747642, z: 6.44}
   m_LocalScale: {x: 0.3975985, y: 0.3975985, z: 0.3975985}
   m_Children: []
   m_Father: {fileID: 7728523310830489529}
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 1879389087}
   - component: {fileID: 1879389086}
   m_Layer: 13
-  m_Name: Cube
+  m_Name: TriggerArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -228,8 +228,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AudiosToTrigger:
   - AudioSource: {fileID: 682878124}
-    Triggered: 0
-  EnemiesToTrigger: []
+  EnemiesToTrigger:
+  - {fileID: 0}
+  MovementToTrigger: []
+  Triggered: 0
 --- !u!54 &427457745
 Rigidbody:
   m_ObjectHideFlags: 0
