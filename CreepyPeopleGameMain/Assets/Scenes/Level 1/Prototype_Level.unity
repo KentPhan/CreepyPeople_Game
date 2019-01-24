@@ -1150,6 +1150,18 @@ PrefabInstance:
       propertyPath: MovementToTrigger.Array.data[2].Object
       value: 
       objectReference: {fileID: 1675915459}
+    - target: {fileID: 682878124, guid: f8cd0d3b39f48d84095b0ff88f6001aa, type: 3}
+      propertyPath: m_Volume
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 570020437, guid: f8cd0d3b39f48d84095b0ff88f6001aa, type: 3}
+      propertyPath: m_Volume
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 371269031, guid: f8cd0d3b39f48d84095b0ff88f6001aa, type: 3}
+      propertyPath: m_Volume
+      value: 0.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8cd0d3b39f48d84095b0ff88f6001aa, type: 3}
 --- !u!43 &62333908

@@ -21,6 +21,11 @@ namespace Assets.Scripts.Main.Characters
 
         [SerializeField]
         private Animator m_Animator;
+
+        [SerializeField] private float m_StunImmunityTime = 2.0f;
+        private float m_CurrentStunImmunityTime = 0.0f;
+
+
         private PlayerScript m_Player;
         private NavMeshAgent m_Agent;
         private EnemyStates m_CurrentState;
@@ -69,6 +74,7 @@ namespace Assets.Scripts.Main.Characters
                 case EnemyStates.ACTIVE when m_Player != null:
                     // Calculate Range from Player
                     m_Agent.destination = m_Player.transform.position;
+                    m_CurrentStunImmunityTime -= Time.deltaTime;
                     break;
                 case EnemyStates.ACTIVE:
                     m_Player = GameManager.Instance.GetCurrentPlayer();
@@ -78,6 +84,7 @@ namespace Assets.Scripts.Main.Characters
                     if (m_CurrentStunTime <= 0.0f)
                     {
                         m_CurrentState = EnemyStates.ACTIVE;
+                        m_CurrentStunImmunityTime = m_StunImmunityTime;
                         m_AudioSource.Play();
                         m_Agent.enabled = true;
                         m_Animator.SetBool("IsWalking", true);
@@ -91,10 +98,13 @@ namespace Assets.Scripts.Main.Characters
         }
         public void Stun(float i_StunTime)
         {
-            m_CurrentState = EnemyStates.STUNNED;
-            m_CurrentStunTime = i_StunTime;
-            m_Agent.enabled = false;
-            m_Animator.SetBool("IsWalking", false);
+            if (m_CurrentStunImmunityTime <= 0.0f && m_CurrentState != EnemyStates.STUNNED)
+            {
+                m_CurrentState = EnemyStates.STUNNED;
+                m_CurrentStunTime = i_StunTime;
+                m_Agent.enabled = false;
+                m_Animator.SetBool("IsWalking", false);
+            }
             return;
         }
 
