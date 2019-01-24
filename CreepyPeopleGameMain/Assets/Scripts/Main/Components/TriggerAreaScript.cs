@@ -10,6 +10,7 @@ namespace Assets.Scripts.Main.Components
         public class AudioTrigger
         {
             public AudioSource AudioSource;
+            public float Delay;
         }
 
         [System.Serializable]
@@ -48,7 +49,7 @@ namespace Assets.Scripts.Main.Components
                 // Trigger Audio
                 foreach (AudioTrigger l_Audio in AudiosToTrigger)
                 {
-                    l_Audio.AudioSource.Play();
+                    l_Audio.AudioSource.PlayDelayed(l_Audio.Delay);
                 }
 
                 // Enemies
