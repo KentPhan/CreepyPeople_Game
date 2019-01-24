@@ -8,6 +8,7 @@ namespace Assets.Scripts.Main.Managers
         [SerializeField] private RectTransform StartScreen;
         [SerializeField] private Camera StartCamera;
         [SerializeField] private RectTransform GameOverScreen;
+        [SerializeField] private RectTransform WinScreen;
 
         [SerializeField] private Text ConnectionText;
         [SerializeField] private Text TransformText;
@@ -30,6 +31,7 @@ namespace Assets.Scripts.Main.Managers
         void Start()
         {
             GameOverScreen.gameObject.SetActive(false);
+            WinScreen.gameObject.SetActive(false);
         }
 
         // Update is called once per frame
@@ -64,11 +66,17 @@ namespace Assets.Scripts.Main.Managers
             GameOverScreen.gameObject.SetActive(true);
         }
 
+        public void ShowWinScreen()
+        {
+            WinScreen.gameObject.SetActive(true);
+        }
+
         public void Reset()
         {
             GameOverScreen.gameObject.SetActive(false);
             StartScreen.gameObject.SetActive(true);
             StartCamera.gameObject.SetActive(true);
+            WinScreen.gameObject.SetActive(false);
         }
     }
 }

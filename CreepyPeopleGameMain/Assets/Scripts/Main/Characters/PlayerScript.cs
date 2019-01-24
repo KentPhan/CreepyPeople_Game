@@ -206,5 +206,13 @@ namespace Assets.Scripts.Main.Characters
         {
             return m_CurrentInventory;
         }
+
+        public void OnTriggerEnter(Collider i_collider)
+        {
+            if (i_collider.gameObject.CompareTag("Win"))
+            {
+                GameManager.Instance.TriggerWin();
+            }
+        }
     }
 }

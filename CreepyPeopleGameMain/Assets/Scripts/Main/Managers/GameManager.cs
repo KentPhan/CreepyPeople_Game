@@ -9,7 +9,9 @@ namespace Assets.Scripts.Main.Managers
         NOT_IN_ROOM = 0,
         START = 1,
         PLAY = 2,
-        GAMEOVER = 3
+        GAMEOVER = 3,
+        WIN,
+
     }
 
     public class GameManager : MonoBehaviour
@@ -58,6 +60,10 @@ namespace Assets.Scripts.Main.Managers
                     if (Input.GetButtonDown("Submit"))
                         RestartGame();
                     break;
+                case GameStates.WIN:
+                    if (Input.GetButtonDown("Submit"))
+                        RestartGame();
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -97,6 +103,12 @@ namespace Assets.Scripts.Main.Managers
             MainCanvasManager.Instance.ShowGameOver();
             m_CurrentGameState = GameStates.GAMEOVER;
             MainNetworkManager.Instance.PollGameState();
+        }
+
+        public void TriggerWin()
+        {
+            m_CurrentGameState = GameStates.WIN;
+            MainCanvasManager.Instance.ShowWinScreen();
         }
 
         public void RestartGame()
