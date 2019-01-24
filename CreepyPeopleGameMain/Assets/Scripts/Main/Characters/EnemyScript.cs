@@ -19,6 +19,8 @@ namespace Assets.Scripts.Main.Characters
 
         [SerializeField] private Transform EnemySpawnLocation;
 
+        [SerializeField]
+        private Animator m_Animator;
         private PlayerScript m_Player;
         private NavMeshAgent m_Agent;
         private EnemyStates m_CurrentState;
@@ -40,6 +42,7 @@ namespace Assets.Scripts.Main.Characters
             m_Player = GameManager.Instance.GetCurrentPlayer();
             m_CurrentState = EnemyStates.DORMANT;
             m_AudioSource = GetComponent<AudioSource>();
+            m_Animator.SetBool("IsWalking", false);
         }
 
         public void RestartEnemy()
@@ -53,6 +56,7 @@ namespace Assets.Scripts.Main.Characters
             m_Agent.enabled = true;
             m_CurrentState = EnemyStates.DORMANT;
             m_AudioSource.Stop();
+            m_Animator.SetBool("IsWalking", false);
         }
 
         // Update is called once per frame
@@ -74,6 +78,7 @@ namespace Assets.Scripts.Main.Characters
                         m_CurrentState = EnemyStates.ACTIVE;
                         m_AudioSource.Play();
                         m_Agent.enabled = true;
+                        m_Animator.SetBool("IsWalking", true);
                     }
                     break;
                 case EnemyStates.DORMANT:
@@ -88,6 +93,7 @@ namespace Assets.Scripts.Main.Characters
             m_CurrentStunTime = i_StunTime;
             m_Agent.enabled = false;
             m_AudioSource.Stop();
+            m_Animator.SetBool("IsWalking", false);
             return;
         }
 
@@ -95,6 +101,7 @@ namespace Assets.Scripts.Main.Characters
         {
             m_CurrentState = EnemyStates.ACTIVE;
             m_AudioSource.Play();
+            m_Animator.SetBool("IsWalking", true);
         }
 
         public bool IsDormant()
