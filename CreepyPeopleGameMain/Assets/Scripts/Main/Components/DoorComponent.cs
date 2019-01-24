@@ -28,12 +28,21 @@ namespace Assets.Scripts.Main.Components
 
         }
 
+        public void Reset()
+        {
+            GetComponentInChildren<MeshRenderer>().enabled = true;
+            GetComponentInChildren<BoxCollider>().enabled = true;
+            m_Open = false;
+            m_Locked = true;
+        }
+
         public void AttemptOpen(object[] i_Inventory)
         {
             // TODO should always be booleans
             if ((bool)i_Inventory[m_KeyINDEX])
             {
-                gameObject.SetActive(false);
+                GetComponentInChildren<MeshRenderer>().enabled = false;
+                GetComponentInChildren<BoxCollider>().enabled = false;
                 m_Open = true;
                 m_Locked = false;
                 i_Inventory[m_KeyINDEX] = false;

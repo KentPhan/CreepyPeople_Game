@@ -540,7 +540,7 @@ GameObject:
   - component: {fileID: 427457745}
   m_Layer: 13
   m_Name: TriggerArea
-  m_TagString: Untagged
+  m_TagString: TriggerArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -589,10 +589,13 @@ MonoBehaviour:
   MovementToTrigger:
   - Object: {fileID: 0}
     NewTransform: {fileID: 827669659}
+    OldPosition: {x: 0, y: 0, z: 0}
   - Object: {fileID: 0}
     NewTransform: {fileID: 709465559}
+    OldPosition: {x: 0, y: 0, z: 0}
   - Object: {fileID: 0}
     NewTransform: {fileID: 289276769}
+    OldPosition: {x: 0, y: 0, z: 0}
   Triggered: 0
 --- !u!54 &427457745
 Rigidbody:

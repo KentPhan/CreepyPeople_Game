@@ -53,6 +53,8 @@ namespace Assets.Scripts.Main.Characters
                 transform.rotation = EnemySpawnLocation.rotation;
             }
 
+
+            m_Player = GameManager.Instance.GetCurrentPlayer();
             m_Agent.enabled = true;
             m_CurrentState = EnemyStates.DORMANT;
             m_AudioSource.Stop();

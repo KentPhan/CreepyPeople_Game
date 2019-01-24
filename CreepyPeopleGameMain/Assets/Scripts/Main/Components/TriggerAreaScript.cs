@@ -21,6 +21,7 @@ namespace Assets.Scripts.Main.Components
         {
             public GameObject Object;
             public Transform NewTransform;
+            [HideInInspector] public Vector3 OldPosition;
         }
 
         public List<AudioTrigger> AudiosToTrigger;
@@ -47,6 +48,21 @@ namespace Assets.Scripts.Main.Components
         {
 
         }
+
+        public void Reset()
+        {
+
+            Triggered = false;
+
+            // Reset Transforms
+            foreach (TransformTriggers l_Transform in MovementToTrigger)
+            {
+                l_Transform.Object.GetComponent<Rigidbody>().MovePosition(l_Transform.OldPosition);
+            }
+        }
+
+
+
         public void OnTriggerEnter()
         {
             if (!Triggered)
@@ -72,6 +88,7 @@ namespace Assets.Scripts.Main.Components
                 // Transforms
                 foreach (TransformTriggers l_Transform in MovementToTrigger)
                 {
+                    l_Transform.OldPosition = l_Transform.Object.gameObject.transform.position;
                     l_Transform.Object.GetComponent<Rigidbody>().MovePosition(l_Transform.NewTransform.position);
                 }
 

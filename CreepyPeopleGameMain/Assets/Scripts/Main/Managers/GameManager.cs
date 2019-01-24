@@ -1,4 +1,5 @@
 using Assets.Scripts.Main.Characters;
+using Assets.Scripts.Main.Components;
 using System;
 using UnityEngine;
 
@@ -127,6 +128,12 @@ namespace Assets.Scripts.Main.Managers
                 l_enemy.GetComponent<EnemyScript>().RestartEnemy();
             }
 
+            // Trigger Areas
+            foreach (GameObject l_triggerArea in GameObject.FindGameObjectsWithTag("TriggerArea"))
+            {
+                l_triggerArea.GetComponent<TriggerAreaScript>().Reset();
+            }
+
 
             // Items
             foreach (GameObject l_item in GameObject.FindGameObjectsWithTag("Item"))
@@ -143,7 +150,8 @@ namespace Assets.Scripts.Main.Managers
             // Items
             foreach (GameObject l_door in GameObject.FindGameObjectsWithTag("Door"))
             {
-                l_door.gameObject.SetActive(true);
+                if (l_door.GetComponent<DoorComponent>() != null)
+                    l_door.GetComponent<DoorComponent>().Reset();
             }
 
             // UI
