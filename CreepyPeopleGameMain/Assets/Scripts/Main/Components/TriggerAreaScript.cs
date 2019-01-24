@@ -62,8 +62,7 @@ namespace Assets.Scripts.Main.Components
                 // Transforms
                 foreach (TransformTriggers l_Transform in MovementToTrigger)
                 {
-                    l_Transform.Object.transform.position = l_Transform.NewTransform.position;
-                    l_Transform.Object.transform.rotation = l_Transform.NewTransform.rotation;
+                    l_Transform.Object.GetComponent<Rigidbody>().MovePosition(l_Transform.NewTransform.position);
                 }
 
                 Triggered = true;
