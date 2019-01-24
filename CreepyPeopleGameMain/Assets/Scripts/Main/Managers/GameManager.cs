@@ -91,7 +91,10 @@ namespace Assets.Scripts.Main.Managers
                 if (l_Players.Length == 1)
                     m_CurrentPlayer = l_Players[0].GetComponent<PlayerScript>();
                 else
+                {
                     m_CurrentPlayer = Instantiate(PlayerPrefab, l_spawn.position, l_spawn.rotation);
+                }
+
             }
 
             // Poll initial Flashlight
@@ -144,7 +147,6 @@ namespace Assets.Scripts.Main.Managers
                 //if (l_item.GetComponentInChildren<BoxCollider>() != null)
                 //    l_item.GetComponentInChildren<BoxCollider>().enabled = true;
             }
-
 
             // Doors
             // Items

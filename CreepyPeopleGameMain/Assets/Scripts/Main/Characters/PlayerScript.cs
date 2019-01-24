@@ -69,6 +69,8 @@ namespace Assets.Scripts.Main.Characters
             m_CurrentPlayerState = PlayerStates.ALIVE;
             m_CurrentBatteryPower = MaxBatteryPower;
 
+            MainNetworkManager.Instance.PollInventoryStatus();
+
 
             // Cache
             FlashLight.enabled = false;
@@ -210,6 +212,16 @@ namespace Assets.Scripts.Main.Characters
         public object[] GetCurrentInventoryStatus()
         {
             return m_CurrentInventory;
+        }
+
+        public void ResetInventory()
+        {
+            if (m_CurrentInventory == null)
+                return;
+            for (int i = 0; i < m_CurrentInventory.Length; i++)
+            {
+                m_CurrentInventory[i] = false;
+            }
         }
 
         public void OnTriggerEnter(Collider i_collider)
