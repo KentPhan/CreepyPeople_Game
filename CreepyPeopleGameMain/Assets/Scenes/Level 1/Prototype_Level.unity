@@ -34445,11 +34445,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 512132503260023956, guid: a2b6421434501554586b730d59ae6584,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5815343899182907454, guid: a2b6421434501554586b730d59ae6584,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -34504,21 +34499,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5815343899182907454, guid: a2b6421434501554586b730d59ae6584,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3.69218
-      objectReference: {fileID: 0}
-    - target: {fileID: 5815343899182907454, guid: a2b6421434501554586b730d59ae6584,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2.86652
-      objectReference: {fileID: 0}
-    - target: {fileID: 5926157841329465545, guid: a2b6421434501554586b730d59ae6584,
-        type: 3}
-      propertyPath: m_EnemiesToTriggerOnOpen.Array.size
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5926157841329465545, guid: a2b6421434501554586b730d59ae6584,
         type: 3}
@@ -40911,15 +40891,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door
       objectReference: {fileID: 0}
-    - target: {fileID: 512132503260023956, guid: a2b6421434501554586b730d59ae6584,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5815343899182907454, guid: a2b6421434501554586b730d59ae6584,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 40.39
+      value: 40.3
       objectReference: {fileID: 0}
     - target: {fileID: 5815343899182907454, guid: a2b6421434501554586b730d59ae6584,
         type: 3}
