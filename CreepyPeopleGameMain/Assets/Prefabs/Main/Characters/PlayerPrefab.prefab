@@ -651,7 +651,7 @@ MonoBehaviour:
   CameraReference: {fileID: 23}
   InteractRange: 20
   FlashLight: {fileID: 945116831}
-  FlashLightStunTime: 5
+  FlashLightStunTime: 3
   FlashLightStunRange: 20
   FlashLightBatteryDrainRate: 1
   MaxBatteryPower: 300
