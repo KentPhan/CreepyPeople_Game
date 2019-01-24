@@ -23,37 +23,44 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private Quaternion m_CameraTargetRot;
         private bool m_cursorIsLocked = true;
 
-        public void Init(Transform character, Transform camera)
+        public bool IsController;
+
+        public void Init(Transform character, Transform camera, bool is_controller)
         {
             m_CharacterTargetRot = character.localRotation;
             m_CameraTargetRot = camera.localRotation;
+            IsController = is_controller;
         }
 
 
         public void LookRotation(Transform character, Transform camera)
         {
-
-            float yRot = CrossPlatformInputManager.GetAxis("Mouse X") * XSensitivity;
-            float xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;
-
-            //float xRotC = CrossPlatformInputManager.GetAxis("Horizontal XBox") * XSensitivityController;
-            //float yRotC = CrossPlatformInputManager.GetAxis("Vertical XBox") * YSensitivityController;
-
-            m_CharacterTargetRot *= Quaternion.Euler(0f, yRot, 0f);
-            m_CameraTargetRot *= Quaternion.Euler(-xRot, 0f, 0f);
-
-
-            //Debug.Log(xRot + " " + yRot + "|SEnse" + XSensitivityController + " " + yRotC);
-            if (xRot > 0.0f || yRot > 0.0f)
+            if (IsController)
             {
-                //m_CharacterTargetRot *= Quaternion.Euler(0f, yRot, 0f);
-                //m_CameraTargetRot *= Quaternion.Euler(-xRot, 0f, 0f);
+                float xRotC = CrossPlatformInputManager.GetAxis("Horizontal XBox") * XSensitivityController;
+                float yRotC = CrossPlatformInputManager.GetAxis("Vertical XBox") * YSensitivityController;
+                m_CharacterTargetRot *= Quaternion.Euler(0f, xRotC, 0f);
+                m_CameraTargetRot *= Quaternion.Euler(-yRotC, 0f, 0f);
             }
             else
             {
-                //m_CharacterTargetRot *= Quaternion.Euler(0f, xRotC, 0f);
-                //m_CameraTargetRot *= Quaternion.Euler(-yRotC, 0f, 0f);
+                float yRot = CrossPlatformInputManager.GetAxis("Mouse X") * XSensitivity;
+                float xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;
+                m_CharacterTargetRot *= Quaternion.Euler(0f, yRot, 0f);
+                m_CameraTargetRot *= Quaternion.Euler(-xRot, 0f, 0f);
             }
+
+            //Debug.Log(xRot + " " + yRot + "|SEnse" + XSensitivityController + " " + yRotC);
+            //if (xRot > 0.0f || yRot > 0.0f)
+            //{
+            //    m_CharacterTargetRot *= Quaternion.Euler(0f, yRot, 0f);
+            //    m_CameraTargetRot *= Quaternion.Euler(-xRot, 0f, 0f);
+            //}
+            //else
+            //{
+            //    m_CharacterTargetRot *= Quaternion.Euler(0f, xRotC, 0f);
+            //    m_CameraTargetRot *= Quaternion.Euler(-yRotC, 0f, 0f);
+            //}
 
 
 

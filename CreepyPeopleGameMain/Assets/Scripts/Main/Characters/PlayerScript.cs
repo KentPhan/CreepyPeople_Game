@@ -71,7 +71,7 @@ namespace Assets.Scripts.Main.Characters
 
 
             // Cache
-            FlashLight.enabled = true;
+            FlashLight.enabled = false;
             m_EnemyMask = LayerMask.GetMask("Enemy");
             m_InteractableMask = LayerMask.GetMask("Item", "Interactable");
             m_FirstPersonController = GetComponent<FirstPersonController>();

@@ -311,6 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ec5cf00ca181d45a42ba1870e148c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_IsController: 1
   m_IsWalking: 0
   m_WalkSpeed: 3.5
   m_RunSpeed: 7.5
@@ -329,6 +330,7 @@ MonoBehaviour:
     smooth: 0
     smoothTime: 5
     lockCursor: 1
+    IsController: 0
   m_UseFovKick: 1
   m_FovKick:
     Camera: {fileID: 0}
@@ -693,7 +695,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 945116828}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 0.9811321, g: 0.975955, b: 0.8284087, a: 1}
