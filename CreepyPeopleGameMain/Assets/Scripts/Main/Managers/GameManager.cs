@@ -46,6 +46,11 @@ namespace Assets.Scripts.Main.Managers
         // Update is called once per frame
         void Update()
         {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                RestartGame();
+            }
+
             switch (m_CurrentGameState)
             {
                 case GameStates.START:
@@ -126,7 +131,11 @@ namespace Assets.Scripts.Main.Managers
             // Items
             foreach (GameObject l_item in GameObject.FindGameObjectsWithTag("Item"))
             {
-                l_item.SetActive(true);
+                //Debug.Log(l_item);
+                if (l_item.GetComponentInChildren<MeshRenderer>() != null)
+                    l_item.GetComponentInChildren<MeshRenderer>().enabled = true;
+                //if (l_item.GetComponentInChildren<BoxCollider>() != null)
+                //    l_item.GetComponentInChildren<BoxCollider>().enabled = true;
             }
 
 

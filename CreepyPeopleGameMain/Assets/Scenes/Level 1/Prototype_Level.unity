@@ -40246,8 +40246,42 @@ PrefabInstance:
     - target: {fileID: 478972837, guid: 0cda98780ce90f54697a9d2182052c41, type: 3}
       propertyPath: m_Sprite
       value: 
+      objectReference: {fileID: 21300000, guid: 9691b534fa5a44b4cae2cb7ef6bef682,
+        type: 3}
+    - target: {fileID: 830460108, guid: 0cda98780ce90f54697a9d2182052c41, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 980296361, guid: 0cda98780ce90f54697a9d2182052c41, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6272881947924089195, guid: 0cda98780ce90f54697a9d2182052c41,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 294623293, guid: 0cda98780ce90f54697a9d2182052c41, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 980296363, guid: 0cda98780ce90f54697a9d2182052c41, type: 3}
+      propertyPath: m_Sprite
+      value: 
       objectReference: {fileID: 21300000, guid: 191f963e7ba8e8b45970585785820da9,
         type: 3}
+    - target: {fileID: 980296363, guid: 0cda98780ce90f54697a9d2182052c41, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 980296363, guid: 0cda98780ce90f54697a9d2182052c41, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 980296363, guid: 0cda98780ce90f54697a9d2182052c41, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cda98780ce90f54697a9d2182052c41, type: 3}
 --- !u!1001 &4746946557897510251
