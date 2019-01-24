@@ -92,7 +92,6 @@ namespace Assets.Scripts.Main.Characters
             m_CurrentState = EnemyStates.STUNNED;
             m_CurrentStunTime = i_StunTime;
             m_Agent.enabled = false;
-            m_AudioSource.Stop();
             m_Animator.SetBool("IsWalking", false);
             return;
         }
