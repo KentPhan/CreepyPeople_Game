@@ -16206,6 +16206,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2b3847db5ea04a46ae14cf6c4f1f7fa, type: 3}
+--- !u!1 &958512938
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 958512939}
+  m_Layer: 0
+  m_Name: EnemySpawn2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &958512939
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958512938}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 136.63, y: 29.05363, z: 12.83}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1801447835}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &963036909
 Mesh:
   m_ObjectHideFlags: 0
@@ -30027,13 +30057,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1599093375}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: -0, y: 0.7080514, z: -0, w: -0.7061609}
   m_LocalPosition: {x: 129.9, y: 3.25, z: 4.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 269.847, z: 0}
 --- !u!43 &1602859772
 Mesh:
   m_ObjectHideFlags: 0
@@ -34423,6 +34453,7 @@ Transform:
   - {fileID: 1859287070}
   - {fileID: 235167845}
   - {fileID: 1846477956}
+  - {fileID: 958512939}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -35252,7 +35283,7 @@ PrefabInstance:
         type: 3}
       propertyPath: EnemySpawnLocation
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 958512939}
     - target: {fileID: 2577218886816165797, guid: 50022dc31d99d3c42ac2fb14810a1a4a,
         type: 3}
       propertyPath: m_LocalPosition.x

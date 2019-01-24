@@ -23,6 +23,7 @@ namespace Assets.Scripts.Main.Characters
         private NavMeshAgent m_Agent;
         private EnemyStates m_CurrentState;
         private float m_CurrentStunTime;
+        private AudioSource m_AudioSource;
 
 
 
@@ -38,6 +39,7 @@ namespace Assets.Scripts.Main.Characters
             m_Agent = GetComponent<NavMeshAgent>();
             m_Player = GameManager.Instance.GetCurrentPlayer();
             m_CurrentState = EnemyStates.DORMANT;
+            m_AudioSource = GetComponent<AudioSource>();
         }
 
         public void RestartEnemy()
@@ -50,6 +52,7 @@ namespace Assets.Scripts.Main.Characters
 
             m_Agent.enabled = true;
             m_CurrentState = EnemyStates.DORMANT;
+            m_AudioSource.Stop();
         }
 
         // Update is called once per frame
@@ -69,6 +72,7 @@ namespace Assets.Scripts.Main.Characters
                     if (m_CurrentStunTime <= 0.0f)
                     {
                         m_CurrentState = EnemyStates.ACTIVE;
+                        m_AudioSource.Play();
                         m_Agent.enabled = true;
                     }
                     break;
@@ -83,12 +87,14 @@ namespace Assets.Scripts.Main.Characters
             m_CurrentState = EnemyStates.STUNNED;
             m_CurrentStunTime = i_StunTime;
             m_Agent.enabled = false;
+            m_AudioSource.Stop();
             return;
         }
 
         public void WakeUp()
         {
             m_CurrentState = EnemyStates.ACTIVE;
+            m_AudioSource.Play();
         }
 
         public bool IsDormant()
