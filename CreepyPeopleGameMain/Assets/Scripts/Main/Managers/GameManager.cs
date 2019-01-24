@@ -122,6 +122,21 @@ namespace Assets.Scripts.Main.Managers
                 l_enemy.GetComponent<EnemyScript>().RestartEnemy();
             }
 
+
+            // Items
+            foreach (GameObject l_item in GameObject.FindGameObjectsWithTag("Item"))
+            {
+                l_item.SetActive(true);
+            }
+
+
+            // Doors
+            // Items
+            foreach (GameObject l_door in GameObject.FindGameObjectsWithTag("Door"))
+            {
+                l_door.gameObject.SetActive(true);
+            }
+
             // UI
             MainCanvasManager.Instance.Reset();
 

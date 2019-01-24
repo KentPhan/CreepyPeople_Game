@@ -167,8 +167,7 @@ namespace Assets.Scripts.Main.Characters
                         MainNetworkManager.Instance.PollInventoryStatus();
 
                         // TODO Consider if we need to respawn items
-                        // Destroy Item
-                        Destroy(l_Interactable);
+                        l_Interactable.gameObject.GetComponentInParent<Rigidbody>().gameObject.SetActive(false);
                     }
                     else if (l_hitInfo.collider.tag.Equals("Door"))
                     {
