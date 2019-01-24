@@ -6,6 +6,9 @@ namespace Assets.Scripts.Main.Components
 {
     public class TriggerAreaScript : MonoBehaviour
     {
+        [SerializeField]
+        private EnemyScript EnemyPrefab;
+
         [System.Serializable]
         public class AudioTrigger
         {
@@ -20,11 +23,13 @@ namespace Assets.Scripts.Main.Components
             public Transform NewTransform;
         }
 
-
         public List<AudioTrigger> AudiosToTrigger;
 
         [SerializeField]
         public List<EnemyScript> EnemiesToTrigger;
+
+        [SerializeField]
+        public List<GameObject> EnemiesToSpawnAlive;
 
 
         public List<TransformTriggers> MovementToTrigger;
@@ -57,6 +62,11 @@ namespace Assets.Scripts.Main.Components
                 {
                     if (l_Enemy.IsDormant())
                         l_Enemy.WakeUp();
+                }
+                foreach (GameObject l_EnemySpawn in EnemiesToSpawnAlive)
+                {
+                    EnemyScript l_Enemy = Instantiate(EnemyPrefab, l_EnemySpawn.transform.position, Quaternion.identity, this.transform);
+                    l_Enemy.WakeUp();
                 }
 
                 // Transforms

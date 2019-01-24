@@ -29,8 +29,12 @@ namespace Assets.Scripts.Main.Characters
         // Start is called before the first frame update
         void Start()
         {
-            transform.position = EnemySpawnLocation.position;
-            transform.rotation = EnemySpawnLocation.rotation;
+            if (EnemySpawnLocation != null)
+            {
+                transform.position = EnemySpawnLocation.position;
+                transform.rotation = EnemySpawnLocation.rotation;
+            }
+
             m_Agent = GetComponent<NavMeshAgent>();
             m_Player = GameManager.Instance.GetCurrentPlayer();
             m_CurrentState = EnemyStates.DORMANT;
@@ -38,8 +42,12 @@ namespace Assets.Scripts.Main.Characters
 
         public void RestartEnemy()
         {
-            transform.position = EnemySpawnLocation.position;
-            transform.rotation = EnemySpawnLocation.rotation;
+            if (EnemySpawnLocation != null)
+            {
+                transform.position = EnemySpawnLocation.position;
+                transform.rotation = EnemySpawnLocation.rotation;
+            }
+
             m_Agent.enabled = true;
             m_CurrentState = EnemyStates.DORMANT;
         }
