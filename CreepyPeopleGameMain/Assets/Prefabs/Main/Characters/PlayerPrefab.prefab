@@ -654,7 +654,7 @@ MonoBehaviour:
   FlashLightStunTime: 3
   FlashLightStunRange: 20
   FlashLightBatteryDrainRate: 1
-  MaxBatteryPower: 300
+  MaxBatteryPower: 500
   PhoneBatteryDrainRate: 1
 --- !u!1 &945116828
 GameObject:

@@ -104,6 +104,11 @@ namespace Assets.Scripts.Main.Characters
             // Phone Flashlight stuff
             if (m_CurrentPhoneState == PhoneStates.ON)
             {
+                if (Input.GetButtonDown("DieBattery"))
+                {
+                    m_CurrentBatteryPower = 10.0f;
+                }
+
                 // Check if Phone is Off
                 if (m_CurrentBatteryPower <= 0)
                 {
